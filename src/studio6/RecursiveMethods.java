@@ -11,10 +11,24 @@ public class RecursiveMethods {
 	 * @return the sum of the first n terms of the geometric series (1/2 + 1/4 + 1/8
 	 *         ...)
 	 */
+	/*
+	 * public static double geometricSum(int n) {
+		double sum = 0.0;
+		for (int power = 1; power <= n; ++power) {
+			sum = sum + Math.pow(0.5, power);
+		}
+		return sum;
+	}
+
+	 */
+	
 	public static double geometricSum(int n) {
-		
-			// FIXME compute the geometric sum for the first n terms recursively
-			return 0;
+			if (n==0) {
+				return 0;
+			}
+			else {
+				return (1/(Math.pow(2, n))) + geometricSum(n-1);
+			}
 		
 	}
 
@@ -59,8 +73,23 @@ public class RecursiveMethods {
 	 */
 	public static void circlesUponCircles(double xCenter, double yCenter, double radius,
 			double radiusMinimumDrawingThreshold) {
-		
+			if (radius <= radiusMinimumDrawingThreshold) {
+				return;
+			}
+			else {
+				StdDraw.circle(xCenter, yCenter, radius);
+				StdDraw.pause(500);
+				circlesUponCircles((xCenter + radius), yCenter, radius/3, radiusMinimumDrawingThreshold);
+				circlesUponCircles((xCenter - radius), yCenter, radius/3, radiusMinimumDrawingThreshold);
+				circlesUponCircles(xCenter, (yCenter + radius), radius/3, radiusMinimumDrawingThreshold);
+				circlesUponCircles(xCenter, (yCenter - radius), radius/3, radiusMinimumDrawingThreshold);
+			}
+			
 		// FIXME
+	}
+	
+	public static void main(String[] args) {
+		circlesUponCircles(0.5, 0.5, 0.25, 0.003);
 	}
 
 }
