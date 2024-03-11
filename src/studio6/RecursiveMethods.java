@@ -78,7 +78,7 @@ public class RecursiveMethods {
 			}
 			else {
 				StdDraw.circle(xCenter, yCenter, radius);
-				StdDraw.pause(500);
+				StdDraw.pause(100);
 				circlesUponCircles((xCenter + radius), yCenter, radius/3, radiusMinimumDrawingThreshold);
 				circlesUponCircles((xCenter - radius), yCenter, radius/3, radiusMinimumDrawingThreshold);
 				circlesUponCircles(xCenter, (yCenter + radius), radius/3, radiusMinimumDrawingThreshold);
